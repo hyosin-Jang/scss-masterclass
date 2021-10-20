@@ -1,0 +1,21 @@
+.father {
+  display: flex;
+  /* Main Axis*/
+  justify-content: space-around;
+  /* Cross Axis*/
+  height: 100vh;
+  font-size: 50px;
+  color: white;
+}
+
+.child {
+  background: peru;
+  height: 200px;
+  width: 200px;
+  color: white;
+}
+
+.child:nth-child(2) {
+  /* box의 order는 0부터 시작 */
+  order: 1;
+}
