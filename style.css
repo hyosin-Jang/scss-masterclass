@@ -1,21 +1,24 @@
-.father {
-  display: flex;
-  /* Main Axis*/
-  justify-content: space-around;
-  /* Cross Axis*/
-  height: 100vh;
-  font-size: 50px;
-  color: white;
+.grid:first-child {
+  display: grid;
+  color: black;
+  grid-template-columns: repeat(5, minmax(max-content, 1fr));
+  height: 25vh;
+  gap: 10px;
 }
 
-.child {
-  background: peru;
-  height: 200px;
-  width: 200px;
-  color: white;
+.grid:last-child {
+  display: grid;
+  color: black;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  height: 25vh;
+  gap: 10px;
 }
 
-.child:nth-child(2) {
-  /* box의 order는 0부터 시작 */
-  order: 1;
+.item:nth-child(odd) {
+  background-color: pink;
+}
+
+.item:nth-child(even) {
+  background-color: black;
+  color: white;
 }
