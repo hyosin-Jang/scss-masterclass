@@ -5,103 +5,81 @@
   box-sizing: border-box;
 }
 
+/* css grid는 gap color가 없음*/
+/*
+- 대신 body background에 갈색 주고
+- 모든 grid 요소들을 흰색 배경 주기
+- grid gap 1px
+*/
+
 body {
-  height: 100vh;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  background-color: $white;
-}
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: $white;
-  width: $fixedWidth;
-  height: 100%;
-  padding: 75px;
-  display: flex;
-  padding: 190px;
-  padding: 10vh 0 72px 72px;
-  flex-direction: column;
-  justify-content: space-between;
-  color: $red;
-  h1 {
-    font-size: 65px;
-    width: 50%;
-    text-transform: uppercase;
-    letter-spacing: 5px;
-  }
-  h3 {
-    margin-top: 20px;
-    font-size: 15px;
-    font-weight: 300;
-    margin-bottom: 20px;
-  }
-  h3,
-  p {
-    width: 70%;
-    line-height: 1.2;
-    text-align: justify;
-  }
-  p {
-    font-size: 13px;
-    font-weight: 300;
-    margin-bottom: 40px;
-  }
-  nav {
-    width: 80%;
-    ul {
-      height: 100%;
-      display: flex;
-      flex-wrap: wrap;
-      align-content: space-between;
-
-      li {
-        cursor: pointer;
-        margin-right: 12px;
-        font-size: 15px;
-        color: black;
-        opacity: 0.5;
-        padding-bottom: 5px;
-        border-bottom: 2px solid rgba(0, 0, 0, 0.9);
-        margin-bottom: 5px;
-        &:hover {
-          opacity: 1;
-        }
-      }
-    }
-  }
-}
-
-main {
-  background-color: linear-gradient;
-  margin-left: $fixedWidth;
-  .movie {
-    height: 100vh;
+  height: 100vh;
+  background-color: $bg;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 1.5fr 2fr 1.5fr;
+  grid-template-rows: 1fr 5fr 1fr;
+  gap: 1px;
+  & > * {
+    background-color: white;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: white;
-    .wrapper {
-      width: 80%;
+    color: $bg;
+    font-size: 22px;
+    text-transform: uppercase;
+  }
+  .menu {
+    grid-column-start: -2;
+  }
+  .center-image {
+    grid-column: 2 / -2;
+    grid-row: 2 / -2;
+    background-image: url("https://images.unsplash.com/photo-1639677462161-06c5df004737?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80");
+    background-size: cover;
+    background-position: center;
+  }
+  .number__row {
+    background-color: $bg;
+    grid-template-columns: 1fr;
+    display: grid;
+    gap: 1px;
+    height: 100%;
+    align-items: stretch;
+    .number {
       display: flex;
-      flex-direction: column;
-      .movie__header {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        margin-bottom: 25px;
-        h4 {
-          font-size: 28px;
-        }
-        h5 {
-          letter-spacing: 3px;
-        }
+      justify-content: center;
+      align-items: center;
+      color: $white;
+      background-color: $white;
+      cursor: pointer;
+      transition: color 0.3s linear, background-color 0.3s linear;
+      &:hover {
+        background-color: $bg;
+        color: white;
       }
     }
-    img {
-      width: 100%;
+  }
+  .scrolling__text {
+    grid-column-start: 2;
+    white-space: nowrap;
+    overflow: hidden;
+    span {
+      animation: scrollText 3s linear forwards;
     }
+  }
+}
+
+@keyframes scrollText {
+  0% {
+    transform: translateX(-150px);
+  }
+  50% {
+    transform: translateX(150px);
+  }
+  100% {
+    transform: translateX(-150px);
   }
 }
